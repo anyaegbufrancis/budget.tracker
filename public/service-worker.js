@@ -1,9 +1,15 @@
 const FILES_TO_CACHE = [
+  //main static files
   "/",
-  '/index.html',
+  '/database.js',
   '/assets/css/styles.css',
   '/dist/manifest.json',
+  
+  //cache copies  
   '/dist/index.bundle.js',
+  '/dist/database.bundle.js',
+  
+  //cdn & images 
   'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
   'https://cdn.jsdelivr.net/npm/chart.js@2.8.0',
   '/assets/icons/icon-192x192.png',
@@ -13,6 +19,7 @@ const FILES_TO_CACHE = [
 const STATIC_CACHE = "static-cache-v2";
 const RUNTIME_CACHE = "runtime-cache";
 
+//install service worker
 self.addEventListener('install', event => {
   console.log("Service Worker: Installed!");
   event.waitUntil(
@@ -26,7 +33,7 @@ self.addEventListener('install', event => {
   );
 });
 
-// The activate handler takes care of cleaning up old caches.
+// The activate handler that takes care of cleaning up old caches.
 self.addEventListener('activate', (event) => {
   console.log("Service Worker: Activated");
   const currentCaches = [STATIC_CACHE, RUNTIME_CACHE];
@@ -53,28 +60,6 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// self.addEventListener('fetch', (event) => {
-//   if (event.request.url.startsWith(self.location.origin)) {
-//     event.respondWith(
-//       caches.match(event.request).then((cachedResponse) => {
-//         if (cachedResponse) {
-//           return cachedResponse;
-//         }
-
-//         return caches.open(RUNTIME_CACHE).then((cache) => {
-//           return fetch(event.request).then((response) => {
-//             return cache.put(event.request, response.clone()).then(() => {
-//               return response;
-//             });
-//           });
-//         });
-//       })
-//     );
-//   }
-// });
-
-
-
 self.addEventListener("fetch", event => {
   console.log("Service Worker: Fetching");
   // non GET requests are not cached and requests to other origins are not cached
@@ -98,6 +83,8 @@ self.addEventListener("fetch", event => {
             cache.put(event.request, response.clone());
             return response;
           })
+          
+          //grab data from cache as network connection is unavailable
           .catch(() => caches.match(event.request));
       })
     );
