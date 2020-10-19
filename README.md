@@ -33,10 +33,10 @@ The user will be able to add expenses and deposits to their budget with or witho
   
 Please clone the project to your local repo, install the dependencies, start the app by running npm start. You can also use the hosted application on Heroku. 
 
- ![Landing Page](./public/assets/images/pg1.png)
- ![Functionality-1](./public/assets/images/ofl.png)
- ![Functionality-2](./public/assets/images/cshed.png)
- ![Functionality-3](./public/assets/images/nw)
+ ![Landing Page](./public/assets/Images/pg1.png)
+ ![Functionality-1](./public/assets/Images/ofl.png)
+ ![Functionality-2](./public/assets/Images/cshed.png)
+ ![Functionality-3](./public/assets/Images/nw.png)
   
   ## License
   
@@ -54,7 +54,7 @@ Please clone the project to your local repo, install the dependencies, start the
   
   Please click the below to see the feature demo on Heroku: https://offlinebudgetracker.herokuapp.com/
   
-  [![Project Demo on Heroku Feature Demo](./public/assets//images/pg1.png)](https://offlinebudgetracker.herokuapp.com/)
+  [![Project Demo on Heroku Feature Demo](./public/assets//Images/pg1.png)](https://offlinebudgetracker.herokuapp.com/)
   
   ## Authors
   
